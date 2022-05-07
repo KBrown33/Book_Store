@@ -1,5 +1,7 @@
 package com.example.book_store.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -38,4 +40,17 @@ public class Book {
     public void setCategory(String category) {
         this.category = category;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "customer")
+    @JsonIgnore
+    private Customer customer;
 }
